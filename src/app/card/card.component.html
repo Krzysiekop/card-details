@@ -1,0 +1,125 @@
+<!-- <div class="wrapp">
+    <div class="left">
+        <h1> {{ userName?.value| uppercase }}</h1>
+        <p>CARDHOLDER NAME: {{ userName?.value }}</p>
+        <p>Card number: {{ cardNumber?.value }}</p>
+        <p>Card CVC: {{ cvc?.value }}</p>
+        <p>Card expDate month [mm]: {{ expDateMonth?.value }}</p>
+        <p>Card expDate year [yy]: {{ expDateYear?.value }}</p>
+    </div> -->
+<section class="container">
+    <div class="cards">
+        <div class="front">
+            <img id="front-card" src="assets/images/bg-card-front.png" alt="" srcset="" />
+            <img id="card-logo" src="assets/images/card-logo.svg" alt="" srcset="" />
+            <div class="front-numbers">{{ cardNumber?.value ?? '0000 0000 0000 0000 0000' }}</div>
+            <div class="front-exp">
+                <span class="card-exp-m">{{ expDateMonth?.value ?? "12" }}</span>/<span class="card-exp-y">{{
+                    expDateYear?.value ?? '12' }}</span>
+            </div>
+            <div class="front-owner">{{ userName?.value ?? 'Joe Doe'}}</div>
+        </div>
+        <div class="back">
+            <img id="back-card" src="assets/images/bg-card-back.png" alt="" srcset="" />
+            <div class="back-cv">{{ cvc?.value ?? '123'}}</div>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="card__form">
+            <div class="card-details">
+                <form method="post" [formGroup]="cardForm" (submit)="submitApplication()">
+                    <div class="form-group">
+                        <label for="cardName">CARDHOLDER NAME:</label>
+                        <input type="text" formControlName="userName" name="cardName" placeholder="e.g. Jane Appleseed"
+                            class="form-control">
+
+                        <div *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)"
+                            class="alert card_name_alert">
+                            <div *ngIf="userName?.errors?.['required']" class="alert card_name_alert">Name is required.
+                            </div>
+                            <div *ngIf="userName?.errors?.['minlength']" class="alert card_name_alert">
+                                Name must be at least 2 characters long.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cardNumber">CARD NUMBER:</label>
+                        <input type="text" formControlName="cardNumber" placeholder="e.g. 1234 5678 9123 0000"
+                            name="cardNumber" (input)="formatCardNumber($event)" class="form-control">
+
+                        <div *ngIf="cardNumber?.invalid && (cardNumber?.dirty || cardNumber?.touched)"
+                            class="alert card_name_alert">
+                            <p *ngIf="cardNumber?.errors?.['required']" class="alert card_name_alert">Number is
+                                required.
+                            </p>
+
+                            <p *ngIf="cardNumber?.errors?.['minlength'] || cardNumber?.errors?.['maxlength']"
+                                class="alert card_name_alert">
+                                Card number must be 16 number long.
+                            </p>
+                            <p *ngIf="cardNumber?.errors?.['pattern']" class="alert card_name_alert">Only numbers.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card-numbers">
+
+                        <div class="form-group">
+                            <label for="expDateMonth">EXP. DATE (MM/YY):</label>
+                            <div class="date-wrapper">
+                                <input type="number" formControlName="expDateMonth" name="expDateMonth"
+                                    class="expDateMonth" min="1" max="12" placeholder="MM">
+
+                                <input type="number" formControlName="expDateYear" name="expDateYear" min="20" max="77"
+                                    class="expDateYear" placeholder="YY">
+
+                            </div>
+                            <div *ngIf="expDateMonth?.invalid && (expDateMonth?.dirty || expDateMonth?.touched)"
+                                class="alert alert-danger">
+                                <div *ngIf="expDateMonth?.errors?.['required']">Expiration month is required.</div>
+                                <div *ngIf="expDateMonth?.errors?.['pattern']">Only numbers.</div>
+                                <div *ngIf="expDateMonth?.errors?.['max']">max 12</div>
+                            </div>
+
+                            <div *ngIf="expDateYear?.invalid && (expDateYear?.dirty || expDateYear?.touched)"
+                                placeholder="YY" class="alert alert-danger">
+                                <div *ngIf="expDateYear?.errors?.['required']">Expiration year is required.</div>
+                                <div *ngIf="expDateYear?.errors?.['pattern']">Only numbers.</div>
+                                <div *ngIf="expDateYear?.errors?.['max']">max 2077</div>
+                                <div *ngIf="expDateYear?.errors?.['min']">min 2020</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cvc">CVC:</label>
+                            <input type="text" formControlName="cvc" name="cvc" placeholder="e.g. 123"
+                                class="form-control">
+
+                            <div *ngIf="cvc?.invalid && (cvc?.dirty || cvc?.touched)" class="alert alert-danger">
+                                <div *ngIf="cvc?.errors?.['required']">CVC is required.</div>
+                                <div *ngIf="cvc?.errors?.['maxlength'] || cvc?.errors?.['minlength'] ">
+                                    CVC need 3 digit.
+                                </div>
+                                <div *ngIf="cvc?.errors?.['pattern']">Only numbers.</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button type="submit" [disabled]="!cardForm.valid" class="conf_btn">Confirm</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="thank-you-wrapper">
+            <div class="thank-you">
+                <img src="images/icon-complete.svg" alt="" srcset="" />
+                <h1 class="thankyou-h1">Thank you!</h1>
+                <p class="thankyou-p">We've added your card details</p>
+                <button class="re-btn" type="submit">Continue</button>
+            </div>
+        </div>
+
+    </div>
+</section>

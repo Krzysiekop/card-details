@@ -1,1 +1,321 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(assets/images/bg-main-desktop.png);
+    background-size: 29% 100%;
+    background-repeat: no-repeat;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+}
+
+.card__form {
+    width: 350px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0px;
+}
+
+.card-numbers {
+    display: flex;
+    gap: 15px;
+}
+
+#exp_date_m {
+    width: 60px;
+}
+
+#exp_date_y {
+    width: 60px;
+}
+
+#cvc {
+    width: 100%;
+    padding: 12px 0;
+}
+
+#cvc::placeholder {
+    padding-left: 10px;
+}
+
+.conf_btn {
+    font-size: 16px;
+    width: 100%;
+    color: white;
+    border-radius: 6px;
+    background-color: hsl(278, 68%, 11%);
+    padding: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.conf_btn:disabled {
+    cursor: not-allowed;
+}
+
+label {
+    text-transform: uppercase;
+    font-size: 12px;
+    padding-bottom: 5px;
+}
+
+input {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+input:focus {
+    outline: none;
+    border-color: hsl(249, 99%, 64%);
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards {
+    width: 600px;
+    height: 600px;
+    position: relative;
+}
+
+#front-card {
+    width: 447px;
+    height: 245px;
+    position: absolute;
+    left: -140px;
+    top: 30px;
+    z-index: -1;
+}
+
+#back-card {
+    width: 447px;
+    height: 245px;
+    position: absolute;
+    left: -70px;
+    top: 300px;
+}
+
+.back-cv {
+    position: absolute;
+    right: 300px;
+    top: 402px;
+    color: white;
+    font-size: 29px;
+}
+
+#card-logo {
+    z-index: 5;
+    position: absolute;
+    left: -100px;
+    top: 50px;
+}
+
+.front-numbers {
+    position: absolute;
+    top: 160px;
+    left: -120px;
+    font-size: 28px;
+    color: white;
+}
+
+.front-owner {
+    position: absolute;
+    top: 220px;
+    left: -110px;
+    color: white;
+}
+
+.front-exp {
+    position: absolute;
+    top: 220px;
+    left: 200px;
+    color: white;
+}
+
+.thank-you-wrapper {
+    display: none;
+    width: 350px;
+}
+
+.thank-you {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.thankyou-h1 {
+    padding-bottom: 15px;
+    padding-top: 25px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+}
+
+.thankyou-p {
+    color: grey;
+    font-size: 16px;
+    padding-bottom: 15px;
+}
+
+.re-btn {
+    width: 370px;
+    color: white;
+    border-radius: 6px;
+    background-color: hsl(278, 68%, 11%);
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.alert {
+    font-size: 11px;
+    color: red;
+}
+
+.alerts_group {
+    display: flex;
+    gap: 5px;
+}
+
+.date-wrapper {
+    display: flex;
+    gap: 5px;
+}
+
+.attribution {
+    position: absolute;
+    bottom: 0;
+    color: white;
+}
+
+.attribution a {
+    color: bisque;
+}
+
+.expDateMonth {
+    width: 60%;
+}
+
+.expDateYear {
+    width: 60%;
+}
+
+.date-wrapper {
+    display: flex;
+    gap: 5px;
+}
+
+
+@media only screen and (max-width: 1300px) {
+    .container {
+
+        margin-left: 4rem;
+    }
+}
+
+@media only screen and (max-width: 1230px) {
+    .container {
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-left: 0rem;
+    }
+
+    body {
+        background-image: url(assets/images/bg-main-mobile.png);
+        background-size: 100% 20%;
+    }
+
+    #front-card {
+        width: 307px;
+        height: 159px;
+        position: absolute;
+        left: 137px;
+        top: 120px;
+        z-index: -1;
+    }
+
+    #back-card {
+        width: 293px;
+        height: 151px;
+        position: absolute;
+        left: 178px;
+        top: 21px;
+        z-index: -5;
+    }
+
+    .cards {
+        width: 600px;
+        height: 300px;
+        position: relative;
+    }
+
+    #card-logo {
+        z-index: 5;
+        position: absolute;
+        left: 150px;
+        top: 130px;
+    }
+
+    .front-numbers {
+        position: absolute;
+        top: 185px;
+        left: 165px;
+        font-size: 19px;
+        color: white;
+    }
+
+    .front-exp {
+        position: absolute;
+        top: 235px;
+        left: 384px;
+        color: white;
+    }
+
+    .front-owner {
+        position: absolute;
+        top: 234px;
+        left: 161px;
+        color: white;
+    }
+
+    .back-cv {
+        position: absolute;
+        right: 165px;
+        top: 81px;
+        color: white;
+        font-size: 20px;
+    }
+
+    .attribution {
+        position: relative;
+        color: black;
+    }
+
+    .attribution a {
+        color: black;
+    }
+}
